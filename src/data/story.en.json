@@ -1,0 +1,376 @@
+{
+  "config": {
+    "noInicial": "inicio",
+    "estadoInicial": {
+      "energia": 100,
+      "codigo": 0,
+      "paciencia": 50,
+      "dia": "mon",
+      "inventario": []
+    },
+    "metaCodigo": 100,
+    "diaFinal": "fri",
+    "dias": ["mon", "tue", "wed", "thu", "fri"]
+  },
+  "nos": {
+    "inicio": {
+      "id": "inicio",
+      "dia": "mon",
+      "tipo": "cena",
+      "texto": "08:59. First day. Your badge still smells of fresh plastic.\n\nYour manager, Rita, walks over with a coffee in one hand and a ringing phone in the other. \"You must be the new junior. I hope you know Git — we ship on Friday.\"\n\nThe office has 14 monitors and zero up-to-date documentation.",
+      "opcoes": [
+        {
+          "texto": "Introduce yourself with confidence and a firm handshake.",
+          "proximoNo": "seg_apresentacao",
+          "impacto": { "energia": -5, "codigo": 0, "paciencia": 5 }
+        },
+        {
+          "texto": "Mumble 'hi' and flee to your desk.",
+          "proximoNo": "seg_secretaria",
+          "impacto": { "energia": 0, "codigo": 0, "paciencia": -5 }
+        }
+      ]
+    },
+
+    "seg_apresentacao": {
+      "id": "seg_apresentacao",
+      "dia": "mon",
+      "tipo": "cena",
+      "texto": "Rita smiles. \"Good attitude. Here's the onboarding.\"\n\nShe sends you a 300-page PDF called `onboarding_FINAL_v2_REVISED_use-this-one.pdf`. It was last updated in 2019.",
+      "opcoes": [
+        {
+          "texto": "Read the whole thing, religiously.",
+          "proximoNo": "seg_primeiro_ticket",
+          "impacto": { "energia": -20, "codigo": 5, "paciencia": 10 },
+          "item": "Memorised Docs"
+        },
+        {
+          "texto": "Pretend you read it and clone the repo.",
+          "proximoNo": "seg_primeiro_ticket",
+          "impacto": { "energia": -5, "codigo": 5, "paciencia": -5 },
+          "item": "Cloned Repo"
+        }
+      ]
+    },
+
+    "seg_secretaria": {
+      "id": "seg_secretaria",
+      "dia": "mon",
+      "tipo": "cena",
+      "texto": "You sit down. The repo refuses to clone: `Permission denied (publickey)`.\n\nThe README just says: \"Ask João.\" Nobody knows who João is. João left the company two years ago.",
+      "opcoes": [
+        {
+          "texto": "Politely ask a senior for help.",
+          "proximoNo": "seg_primeiro_ticket",
+          "impacto": { "energia": -5, "codigo": 0, "paciencia": 5 },
+          "item": "Senior Mentor"
+        },
+        {
+          "texto": "Solve it alone at 3 a.m. with StackOverflow.",
+          "proximoNo": "seg_primeiro_ticket",
+          "impacto": { "energia": -15, "codigo": 5, "paciencia": 0 },
+          "item": "StackOverflow Open"
+        }
+      ]
+    },
+
+    "seg_primeiro_ticket": {
+      "id": "seg_primeiro_ticket",
+      "dia": "mon",
+      "tipo": "cena",
+      "texto": "Your first ticket lands on the board:\n\n  #4521 — \"The button doesn't work.\"\n\nNo steps to reproduce. No screenshots. Assigned to you 4 minutes ago and it already has a comment: \"is this urgent??\"",
+      "opcoes": [
+        {
+          "texto": "Grab a coffee and attack the bug methodically.",
+          "proximoNo": "ter_inicio",
+          "impacto": { "energia": 15, "codigo": 10, "paciencia": 0 },
+          "item": "Espresso"
+        },
+        {
+          "texto": "Mark it 'cannot reproduce' and close it.",
+          "proximoNo": "ter_inicio",
+          "impacto": { "energia": 0, "codigo": 2, "paciencia": -10 }
+        },
+        {
+          "texto": "Stay until 10 p.m. investigating, to impress.",
+          "proximoNo": "ter_cansado",
+          "impacto": { "energia": -25, "codigo": 12, "paciencia": 5 }
+        }
+      ]
+    },
+
+    "ter_inicio": {
+      "id": "ter_inicio",
+      "dia": "tue",
+      "tipo": "cena",
+      "texto": "Tuesday. Daily standup.\n\nYou're meant to say what you did and what you'll do in 30 seconds. The meeting lasts 45 minutes. Rita asks: \"How long do you need for the launch feature?\"",
+      "opcoes": [
+        {
+          "texto": "Give an honest estimate: 'Two weeks, minimum.'",
+          "proximoNo": "ter_dev",
+          "impacto": { "energia": 0, "codigo": 5, "paciencia": -5 }
+        },
+        {
+          "texto": "Say what she wants to hear: 'It'll be ready tomorrow.'",
+          "proximoNo": "ter_dev",
+          "impacto": { "energia": -10, "codigo": 8, "paciencia": 10 }
+        }
+      ]
+    },
+
+    "ter_cansado": {
+      "id": "ter_cansado",
+      "dia": "tue",
+      "tipo": "cena",
+      "texto": "You overslept. You limp in, half-asleep.\n\nLast night's heroic code is full of `console.log('HERE')` and a function called `doTheThingThatWorks()`. Nothing works.",
+      "opcoes": [
+        {
+          "texto": "Down a double espresso before touching the keyboard.",
+          "proximoNo": "ter_dev",
+          "impacto": { "energia": 20, "codigo": 0, "paciencia": 0 },
+          "item": "Double Espresso"
+        },
+        {
+          "texto": "Push on without coffee, in zombie mode.",
+          "proximoNo": "ter_dev",
+          "impacto": { "energia": -10, "codigo": 5, "paciencia": 0 }
+        }
+      ]
+    },
+
+    "ter_dev": {
+      "id": "ter_dev",
+      "dia": "tue",
+      "tipo": "cena",
+      "texto": "Finally, real code. You hit the zone.\n\nA colleague pings you on Slack: \"got 5 min? 🙏 super quick.\" (It's never 5 minutes. It's never quick.)",
+      "opcoes": [
+        {
+          "texto": "Ignore Slack and enter flow state.",
+          "proximoNo": "qua_inicio",
+          "impacto": { "energia": -15, "codigo": 18, "paciencia": 0 },
+          "item": "Do Not Disturb Mode"
+        },
+        {
+          "texto": "Help the colleague — good team karma.",
+          "proximoNo": "qua_inicio",
+          "impacto": { "energia": -5, "codigo": 5, "paciencia": 8 },
+          "item": "Team Karma"
+        }
+      ]
+    },
+
+    "qua_inicio": {
+      "id": "qua_inicio",
+      "dia": "wed",
+      "tipo": "cena",
+      "texto": "Wednesday. Time to merge your branch into `main`.\n\n  $ git merge main\n  CONFLICT (content): Merge conflict in 47 files\n\nThe terminal turns red. You feel the air leave the room. This is the moment the game is named after.",
+      "opcoes": [
+        {
+          "texto": "Resolve conflict by conflict, with the patience of a monk.",
+          "proximoNo": "qua_meio",
+          "impacto": { "energia": -20, "codigo": 15, "paciencia": 5 },
+          "item": "Git Mergetool"
+        },
+        {
+          "texto": "git checkout --theirs on everything and pray.",
+          "proximoNo": "qua_apagar",
+          "impacto": { "energia": -5, "codigo": -10, "paciencia": -15 }
+        },
+        {
+          "texto": "Ask for a code review before merging.",
+          "proximoNo": "qua_meio",
+          "impacto": { "energia": -10, "codigo": 10, "paciencia": 10 },
+          "item": "Senior's Approval"
+        }
+      ]
+    },
+
+    "qua_apagar": {
+      "id": "qua_apagar",
+      "dia": "wed",
+      "tipo": "cena",
+      "texto": "You resolved all 47 conflicts in favour of `main`... and wiped out two weeks of a colleague's work.\n\nShe finds out. Rita appears behind you in silence. You can feel her stare drilling into the back of your neck.",
+      "opcoes": [
+        {
+          "texto": "Apologise and recover everything with 'git reflog'.",
+          "proximoNo": "qua_meio",
+          "impacto": { "energia": -15, "codigo": 5, "paciencia": 5 },
+          "item": "git reflog (lifesaver)"
+        },
+        {
+          "texto": "Claim the CI did it.",
+          "proximoNo": "qua_meio",
+          "impacto": { "energia": 0, "codigo": 0, "paciencia": -20 }
+        }
+      ]
+    },
+
+    "qua_meio": {
+      "id": "qua_meio",
+      "dia": "wed",
+      "tipo": "cena",
+      "texto": "Wednesday afternoon. Production is unstable.\n\nQA finds a critical bug: the shopping cart always charges €0.00. Technically, customers love it. The company, not so much.",
+      "opcoes": [
+        {
+          "texto": "Fix the critical bug right now.",
+          "proximoNo": "qui_inicio",
+          "impacto": { "energia": -15, "codigo": 12, "paciencia": 0 }
+        },
+        {
+          "texto": "Push it to tomorrow — you're wrecked.",
+          "proximoNo": "qui_inicio",
+          "impacto": { "energia": 5, "codigo": 0, "paciencia": -8 }
+        }
+      ]
+    },
+
+    "qui_inicio": {
+      "id": "qui_inicio",
+      "dia": "thu",
+      "tipo": "cena",
+      "texto": "Thursday. Code review day.\n\nThe senior reviews your Pull Request and leaves 32 comments. The first is \"nit:\". The last is \"this ships tomorrow??\". Somewhere in between, a single \"why.\" with no question mark that haunts you.",
+      "opcoes": [
+        {
+          "texto": "Apply every comment, like a professional.",
+          "proximoNo": "qui_final",
+          "impacto": { "energia": -20, "codigo": 15, "paciencia": 10 }
+        },
+        {
+          "texto": "Argue every comment, line by line, in the PR.",
+          "proximoNo": "qui_final",
+          "impacto": { "energia": -10, "codigo": 5, "paciencia": -10 }
+        },
+        {
+          "texto": "Apply half and mark the rest as 'resolved'.",
+          "proximoNo": "qui_final",
+          "impacto": { "energia": -5, "codigo": 8, "paciencia": -5 }
+        }
+      ]
+    },
+
+    "qui_final": {
+      "id": "qui_final",
+      "dia": "thu",
+      "tipo": "cena",
+      "texto": "End of Thursday. Launch is tomorrow morning.\n\nRita stops by your desk: \"Everything's ready for tomorrow, right?\" The 'right' wasn't really a question.",
+      "opcoes": [
+        {
+          "texto": "Pull an all-nighter writing final tests.",
+          "proximoNo": "sex_inicio",
+          "impacto": { "energia": -30, "codigo": 12, "paciencia": 5 },
+          "item": "Green Test Suite"
+        },
+        {
+          "texto": "Go to bed early to be fresh for the launch.",
+          "proximoNo": "sex_inicio",
+          "impacto": { "energia": 25, "codigo": 0, "paciencia": -5 }
+        },
+        {
+          "texto": "One last coffee and a calm review of everything.",
+          "proximoNo": "sex_inicio",
+          "impacto": { "energia": 5, "codigo": 8, "paciencia": 0 },
+          "item": "Midnight Coffee"
+        }
+      ]
+    },
+
+    "sex_inicio": {
+      "id": "sex_inicio",
+      "dia": "fri",
+      "tipo": "cena",
+      "texto": "FRIDAY. LAUNCH DAY.\n\nThe whole team is gathered behind you. The deploy-to-production button glows, red and tempting. Shipping on a Friday — what could possibly go wrong?",
+      "opcoes": [
+        {
+          "texto": "Deploy to production. This is it.",
+          "proximoNo": "sex_deploy",
+          "impacto": { "energia": -10, "codigo": 10, "paciencia": 0 }
+        },
+        {
+          "texto": "Ask for one more day (there is no more day).",
+          "proximoNo": "fim_adiado",
+          "impacto": { "energia": 0, "codigo": 0, "paciencia": -10 }
+        }
+      ]
+    },
+
+    "sex_deploy": {
+      "id": "sex_deploy",
+      "dia": "fri",
+      "tipo": "cena",
+      "texto": "  $ git push origin main --deploy-prod\n  > Building...\n  > Running CI pipeline...\n\nThe progress bar crawls forward. The room holds its breath. Your heart beats in time with the spinner.",
+      "opcoes": [
+        {
+          "texto": "Watch the production logs in real time.",
+          "proximoNo": "sex_resultado",
+          "impacto": { "energia": -5, "codigo": 5, "paciencia": 0 }
+        },
+        {
+          "texto": "Close the laptop and pretend it's not your problem.",
+          "proximoNo": "sex_resultado",
+          "impacto": { "energia": 0, "codigo": 0, "paciencia": -5 }
+        }
+      ]
+    },
+
+    "sex_resultado": {
+      "id": "sex_resultado",
+      "dia": "fri",
+      "tipo": "avaliacao",
+      "texto": "The pipeline finishes. The page loads. Everyone stares at the screen...",
+      "avaliacao": {
+        "seCodigoCompleto": "fim_vitoria",
+        "seCodigoIncompleto": "fim_codigo_incompleto"
+      }
+    },
+
+    "fim_vitoria": {
+      "id": "fim_vitoria",
+      "dia": "fri",
+      "tipo": "fim",
+      "resultado": "vitoria",
+      "titulo": "DEPLOY SUCCESSFUL",
+      "texto": "The app loads. No 500 errors. The cart charges the right amount. The metrics climb, all green.\n\nRita puts a hand on your shoulder: \"You survived your first launch week. Welcome to the team.\"\n\nYou survived. You won. Now go sleep — you have a standup at 9 a.m. on Monday.",
+      "opcoes": []
+    },
+
+    "fim_codigo_incompleto": {
+      "id": "fim_codigo_incompleto",
+      "dia": "fri",
+      "tipo": "fim",
+      "resultado": "derrota",
+      "titulo": "INCOMPLETE LAUNCH",
+      "texto": "The page loads... halfway. Features are missing. A modal flashes \"undefined\" three times.\n\nYou didn't write enough code in time. The launch was postponed and your name is on the commit. You weren't fired — but everyone knows.\n\nNext time, manage your energy and time better. Try again.",
+      "opcoes": []
+    },
+
+    "fim_adiado": {
+      "id": "fim_adiado",
+      "dia": "fri",
+      "tipo": "fim",
+      "resultado": "derrota",
+      "titulo": "DEADLINE MISSED",
+      "texto": "You asked for one more day. There was no more day.\n\nThe launch went ahead without your part. The post-mortem meeting has your name in the slide title. It did not go well.\n\nSometimes 'tomorrow' isn't an option. Try again.",
+      "opcoes": []
+    },
+
+    "fim_desmaio": {
+      "id": "fim_desmaio",
+      "dia": "?",
+      "tipo": "fim",
+      "resultado": "derrota",
+      "titulo": "GAME OVER — PASSED OUT",
+      "texto": "Your coffee cup is empty. The world goes blurry. The last thing you see is the keyboard rushing toward your face.\n\nYou wake up in the office sick room with an 'Enter' key imprinted on your cheek.\n\nYou ran out of energy. You should have had more coffee. Try again.",
+      "opcoes": []
+    },
+
+    "fim_despedido": {
+      "id": "fim_despedido",
+      "dia": "?",
+      "tipo": "fim",
+      "resultado": "derrota",
+      "titulo": "GAME OVER — FIRED",
+      "texto": "Rita takes a deep breath. \"I don't think this is working out.\"\n\nHR already has the cardboard box ready. You hand back the badge that still smells of plastic.\n\nYou ran out of the manager's patience. Try again — and maybe don't blame the CI next time.",
+      "opcoes": []
+    }
+  }
+}

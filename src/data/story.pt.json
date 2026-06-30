@@ -1,0 +1,491 @@
+{
+  "config": {
+    "noInicial": "inicio",
+    "estadoInicial": {
+      "energia": 100,
+      "codigo": 0,
+      "paciencia": 50,
+      "dia": "mon",
+      "inventario": []
+    },
+    "metaCodigo": 100,
+    "diaFinal": "fri",
+    "dias": [
+      "mon",
+      "tue",
+      "wed",
+      "thu",
+      "fri"
+    ]
+  },
+  "nos": {
+    "inicio": {
+      "id": "inicio",
+      "dia": "mon",
+      "tipo": "cena",
+      "texto": "08:59. Primeiro dia. O teu crachá ainda cheira a plástico.\n\nA tua gestora, a Rita, aproxima-se com um café numa mão e o telemóvel a tocar na outra. \"Tu deves ser o novo júnior. Espero que saibas Git — vamos lançar na sexta-feira.\"\n\nO escritório tem 14 monitores e zero documentação atualizada.",
+      "opcoes": [
+        {
+          "texto": "Apresentar-te com confiança e um aperto de mão firme.",
+          "proximoNo": "seg_apresentacao",
+          "impacto": {
+            "energia": -5,
+            "codigo": 0,
+            "paciencia": 5
+          }
+        },
+        {
+          "texto": "Murmurar 'olá' e fugir para a tua secretária.",
+          "proximoNo": "seg_secretaria",
+          "impacto": {
+            "energia": 0,
+            "codigo": 0,
+            "paciencia": -5
+          }
+        }
+      ]
+    },
+    "seg_apresentacao": {
+      "id": "seg_apresentacao",
+      "dia": "mon",
+      "tipo": "cena",
+      "texto": "A Rita sorri. \"Boa atitude. Aqui tens o onboarding.\"\n\nEla envia-te um PDF de 300 páginas chamado `onboarding_FINAL_v2_REVISADO_usar-este.pdf`. A última atualização foi em 2019.",
+      "opcoes": [
+        {
+          "texto": "Ler a documentação toda, religiosamente.",
+          "proximoNo": "seg_primeiro_ticket",
+          "impacto": {
+            "energia": -20,
+            "codigo": 5,
+            "paciencia": 10
+          },
+          "item": "Documentação Decorada"
+        },
+        {
+          "texto": "Fingir que leste e clonar o repositório.",
+          "proximoNo": "seg_primeiro_ticket",
+          "impacto": {
+            "energia": -5,
+            "codigo": 5,
+            "paciencia": -5
+          },
+          "item": "Repo Clonado"
+        }
+      ]
+    },
+    "seg_secretaria": {
+      "id": "seg_secretaria",
+      "dia": "mon",
+      "tipo": "cena",
+      "texto": "Sentas-te. O repositório recusa-se a clonar: `Permission denied (publickey)`.\n\nO README diz apenas: \"Perguntar ao João.\" Ninguém sabe quem é o João. O João saiu da empresa há dois anos.",
+      "opcoes": [
+        {
+          "texto": "Pedir ajuda educadamente a um sénior.",
+          "proximoNo": "seg_primeiro_ticket",
+          "impacto": {
+            "energia": -5,
+            "codigo": 0,
+            "paciencia": 5
+          },
+          "item": "Mentor Sénior"
+        },
+        {
+          "texto": "Resolver sozinho às 3 da manhã com o StackOverflow.",
+          "proximoNo": "seg_primeiro_ticket",
+          "impacto": {
+            "energia": -15,
+            "codigo": 5,
+            "paciencia": 0
+          },
+          "item": "StackOverflow Aberto"
+        }
+      ]
+    },
+    "seg_primeiro_ticket": {
+      "id": "seg_primeiro_ticket",
+      "dia": "mon",
+      "tipo": "cena",
+      "texto": "O teu primeiro ticket aparece no quadro:\n\n  #4521 — \"O botão não funciona.\"\n\nSem passos para reproduzir. Sem screenshots. Atribuído a ti há 4 minutos e já tem um comentário: \"Isto é urgente??\"",
+      "opcoes": [
+        {
+          "texto": "Tomar um café e atacar o bug com método.",
+          "proximoNo": "ter_inicio",
+          "impacto": {
+            "energia": 15,
+            "codigo": 10,
+            "paciencia": 0
+          },
+          "item": "Café Expresso"
+        },
+        {
+          "texto": "Marcar como 'não consigo reproduzir' e fechar.",
+          "proximoNo": "ter_inicio",
+          "impacto": {
+            "energia": 0,
+            "codigo": 2,
+            "paciencia": -10
+          }
+        },
+        {
+          "texto": "Ficar até às 22h a investigar, para impressionar.",
+          "proximoNo": "ter_cansado",
+          "impacto": {
+            "energia": -25,
+            "codigo": 12,
+            "paciencia": 5
+          }
+        }
+      ]
+    },
+    "ter_inicio": {
+      "id": "ter_inicio",
+      "dia": "tue",
+      "tipo": "cena",
+      "texto": "Terça-feira. Daily standup.\n\nÉs suposto dizer em 30 segundos o que fizeste e o que vais fazer. A reunião dura 45 minutos. A Rita pergunta-te: \"Quanto tempo precisas para a funcionalidade do lançamento?\"",
+      "opcoes": [
+        {
+          "texto": "Dar uma estimativa honesta: 'Duas semanas, no mínimo.'",
+          "proximoNo": "ter_dev",
+          "impacto": {
+            "energia": 0,
+            "codigo": 5,
+            "paciencia": -5
+          }
+        },
+        {
+          "texto": "Dizer o que ela quer ouvir: 'Amanhã está pronto.'",
+          "proximoNo": "ter_dev",
+          "impacto": {
+            "energia": -10,
+            "codigo": 8,
+            "paciencia": 10
+          }
+        }
+      ]
+    },
+    "ter_cansado": {
+      "id": "ter_cansado",
+      "dia": "tue",
+      "tipo": "cena",
+      "texto": "Acordaste tarde. Chegas a coxear de sono.\n\nO código heroico de ontem está cheio de `console.log('AQUI')` e uma função chamada `fazerCoisaQueFunciona()`. Nada funciona.",
+      "opcoes": [
+        {
+          "texto": "Beber um café duplo antes de tocar no teclado.",
+          "proximoNo": "ter_dev",
+          "impacto": {
+            "energia": 20,
+            "codigo": 0,
+            "paciencia": 0
+          },
+          "item": "Café Duplo"
+        },
+        {
+          "texto": "Continuar sem café, em modo zombie.",
+          "proximoNo": "ter_dev",
+          "impacto": {
+            "energia": -10,
+            "codigo": 5,
+            "paciencia": 0
+          }
+        }
+      ]
+    },
+    "ter_dev": {
+      "id": "ter_dev",
+      "dia": "tue",
+      "tipo": "cena",
+      "texto": "Finalmente, código a sério. Entras na zona.\n\nUm colega chama-te no Slack: \"tens 5 min? 🙏 super rapidinho.\" (Nunca é 5 minutos. Nunca é rápido.)",
+      "opcoes": [
+        {
+          "texto": "Ignorar o Slack e entrar em flow state.",
+          "proximoNo": "qua_inicio",
+          "impacto": {
+            "energia": -15,
+            "codigo": 18,
+            "paciencia": 0
+          },
+          "item": "Modo Não Incomodar"
+        },
+        {
+          "texto": "Ajudar o colega — bom karma de equipa.",
+          "proximoNo": "qua_inicio",
+          "impacto": {
+            "energia": -5,
+            "codigo": 5,
+            "paciencia": 8
+          },
+          "item": "Karma de Equipa"
+        }
+      ]
+    },
+    "qua_inicio": {
+      "id": "qua_inicio",
+      "dia": "wed",
+      "tipo": "cena",
+      "texto": "Quarta-feira. Hora de fazer merge da tua branch para a `main`.\n\n  $ git merge main\n  CONFLICT (content): Merge conflict in 47 files\n\nO terminal fica vermelho. Sentes o ar a sair da sala. Este é o momento que dá nome ao jogo.",
+      "opcoes": [
+        {
+          "texto": "Resolver conflito a conflito, com paciência de monge.",
+          "proximoNo": "qua_meio",
+          "impacto": {
+            "energia": -20,
+            "codigo": 15,
+            "paciencia": 5
+          },
+          "item": "Git Mergetool"
+        },
+        {
+          "texto": "git checkout --theirs em tudo e rezar.",
+          "proximoNo": "qua_apagar",
+          "impacto": {
+            "energia": -5,
+            "codigo": -10,
+            "paciencia": -15
+          }
+        },
+        {
+          "texto": "Pedir um code review antes de fazer merge.",
+          "proximoNo": "qua_meio",
+          "impacto": {
+            "energia": -10,
+            "codigo": 10,
+            "paciencia": 10
+          },
+          "item": "Aprovação do Sénior"
+        }
+      ]
+    },
+    "qua_apagar": {
+      "id": "qua_apagar",
+      "dia": "wed",
+      "tipo": "cena",
+      "texto": "Resolveste os 47 conflitos a favor da `main`... e apagaste duas semanas de trabalho de uma colega.\n\nEla descobre. A Rita aparece atrás de ti em silêncio. Sentes o olhar dela a perfurar-te a nuca.",
+      "opcoes": [
+        {
+          "texto": "Pedir desculpa e recuperar tudo com 'git reflog'.",
+          "proximoNo": "qua_meio",
+          "impacto": {
+            "energia": -15,
+            "codigo": 5,
+            "paciencia": 5
+          },
+          "item": "git reflog (salvador)"
+        },
+        {
+          "texto": "Dizer que foi o CI que se portou mal.",
+          "proximoNo": "qua_meio",
+          "impacto": {
+            "energia": 0,
+            "codigo": 0,
+            "paciencia": -20
+          }
+        }
+      ]
+    },
+    "qua_meio": {
+      "id": "qua_meio",
+      "dia": "wed",
+      "tipo": "cena",
+      "texto": "Tarde de quarta. A produção está instável.\n\nO QA encontra um bug crítico: o carrinho de compras cobra sempre 0,00 €. Tecnicamente, os clientes adoram. A empresa nem por isso.",
+      "opcoes": [
+        {
+          "texto": "Corrigir o bug crítico imediatamente.",
+          "proximoNo": "qui_inicio",
+          "impacto": {
+            "energia": -15,
+            "codigo": 12,
+            "paciencia": 0
+          }
+        },
+        {
+          "texto": "Adiar para amanhã — estás de rastos.",
+          "proximoNo": "qui_inicio",
+          "impacto": {
+            "energia": 5,
+            "codigo": 0,
+            "paciencia": -8
+          }
+        }
+      ]
+    },
+    "qui_inicio": {
+      "id": "qui_inicio",
+      "dia": "thu",
+      "tipo": "cena",
+      "texto": "Quinta-feira. Dia de code review.\n\nO sénior revê o teu Pull Request e deixa 32 comentários. O primeiro é \"nit:\". O último é \"isto vai ao ar amanhã??\". Entre eles, um simples \"porquê.\" sem ponto de interrogação, que te assombra.",
+      "opcoes": [
+        {
+          "texto": "Aplicar todos os comentários, como um profissional.",
+          "proximoNo": "qui_final",
+          "impacto": {
+            "energia": -20,
+            "codigo": 15,
+            "paciencia": 10
+          }
+        },
+        {
+          "texto": "Discutir cada comentário, linha a linha, no PR.",
+          "proximoNo": "qui_final",
+          "impacto": {
+            "energia": -10,
+            "codigo": 5,
+            "paciencia": -10
+          }
+        },
+        {
+          "texto": "Aplicar metade e marcar o resto como 'resolved'.",
+          "proximoNo": "qui_final",
+          "impacto": {
+            "energia": -5,
+            "codigo": 8,
+            "paciencia": -5
+          }
+        }
+      ]
+    },
+    "qui_final": {
+      "id": "qui_final",
+      "dia": "thu",
+      "tipo": "cena",
+      "texto": "Fim de quinta. O lançamento é amanhã de manhã.\n\nA Rita passa pela tua secretária: \"Está tudo pronto para amanhã, certo?\" O 'certo' não era bem uma pergunta.",
+      "opcoes": [
+        {
+          "texto": "Ficar a noite toda a escrever testes finais.",
+          "proximoNo": "sex_inicio",
+          "impacto": {
+            "energia": -30,
+            "codigo": 12,
+            "paciencia": 5
+          },
+          "item": "Suite de Testes Verde"
+        },
+        {
+          "texto": "Ir dormir cedo para chegar fresco ao lançamento.",
+          "proximoNo": "sex_inicio",
+          "impacto": {
+            "energia": 25,
+            "codigo": 0,
+            "paciencia": -5
+          }
+        },
+        {
+          "texto": "Um último café e uma revisão calma de tudo.",
+          "proximoNo": "sex_inicio",
+          "impacto": {
+            "energia": 5,
+            "codigo": 8,
+            "paciencia": 0
+          },
+          "item": "Café da Meia-Noite"
+        }
+      ]
+    },
+    "sex_inicio": {
+      "id": "sex_inicio",
+      "dia": "fri",
+      "tipo": "cena",
+      "texto": "SEXTA-FEIRA. DIA DO LANÇAMENTO.\n\nToda a equipa está reunida atrás de ti. O botão de deploy para produção brilha, vermelho e tentador. Lançar à sexta — o que poderia correr mal?",
+      "opcoes": [
+        {
+          "texto": "Fazer o deploy para produção. É agora.",
+          "proximoNo": "sex_deploy",
+          "impacto": {
+            "energia": -10,
+            "codigo": 10,
+            "paciencia": 0
+          }
+        },
+        {
+          "texto": "Pedir mais um dia (não há mais um dia).",
+          "proximoNo": "fim_adiado",
+          "impacto": {
+            "energia": 0,
+            "codigo": 0,
+            "paciencia": -10
+          }
+        }
+      ]
+    },
+    "sex_deploy": {
+      "id": "sex_deploy",
+      "dia": "fri",
+      "tipo": "cena",
+      "texto": "  $ git push origin main --deploy-prod\n  > A construir...\n  > A correr pipeline de CI...\n\nA barra de progresso avança. A sala prende a respiração. O teu coração bate ao ritmo do spinner.",
+      "opcoes": [
+        {
+          "texto": "Monitorizar os logs de produção em tempo real.",
+          "proximoNo": "sex_resultado",
+          "impacto": {
+            "energia": -5,
+            "codigo": 5,
+            "paciencia": 0
+          }
+        },
+        {
+          "texto": "Fechar o portátil e fingir que não é contigo.",
+          "proximoNo": "sex_resultado",
+          "impacto": {
+            "energia": 0,
+            "codigo": 0,
+            "paciencia": -5
+          }
+        }
+      ]
+    },
+    "sex_resultado": {
+      "id": "sex_resultado",
+      "dia": "fri",
+      "tipo": "avaliacao",
+      "texto": "O pipeline termina. A página carrega. Todos olham para o ecrã...",
+      "avaliacao": {
+        "seCodigoCompleto": "fim_vitoria",
+        "seCodigoIncompleto": "fim_codigo_incompleto"
+      }
+    },
+    "fim_vitoria": {
+      "id": "fim_vitoria",
+      "dia": "fri",
+      "tipo": "fim",
+      "resultado": "vitoria",
+      "titulo": "DEPLOY BEM-SUCEDIDO",
+      "texto": "A aplicação carrega. Sem erros 500. O carrinho cobra o valor certo. As métricas sobem a verde.\n\nA Rita põe-te a mão no ombro: \"Sobreviveste à tua primeira semana de lançamento. Bem-vindo à equipa.\"\n\nSobreviveste. Ganhaste. Agora vai dormir — tens um standup às 9h de segunda.",
+      "opcoes": []
+    },
+    "fim_codigo_incompleto": {
+      "id": "fim_codigo_incompleto",
+      "dia": "fri",
+      "tipo": "fim",
+      "resultado": "derrota",
+      "titulo": "LANÇAMENTO INCOMPLETO",
+      "texto": "A página carrega... a meio. Faltam funcionalidades. Um modal pisca \"undefined\" três vezes.\n\nNão escreveste código suficiente a tempo. O lançamento foi adiado e o teu nome ficou no commit. Não foste despedido — mas toda a gente sabe.\n\nNa próxima, gere melhor a energia e o tempo. Tenta outra vez.",
+      "opcoes": []
+    },
+    "fim_adiado": {
+      "id": "fim_adiado",
+      "dia": "fri",
+      "tipo": "fim",
+      "resultado": "derrota",
+      "titulo": "PRAZO FALHADO",
+      "texto": "Pediste mais um dia. Não havia mais um dia.\n\nO lançamento aconteceu sem a tua parte. A reunião pós-mortem tem o teu nome no título do slide. Não correu bem.\n\nÀs vezes 'amanhã' não é uma opção. Tenta outra vez.",
+      "opcoes": []
+    },
+    "fim_desmaio": {
+      "id": "fim_desmaio",
+      "dia": "?",
+      "tipo": "fim",
+      "resultado": "derrota",
+      "titulo": "GAME OVER — DESMAIO",
+      "texto": "A tua chávena de café está vazia. O mundo fica desfocado. A última coisa que vês é o teclado a aproximar-se rapidamente da tua cara.\n\nAcordas na enfermaria da empresa com a marca de uma tecla 'Enter' na bochecha.\n\nFicaste sem energia. Devias ter tomado mais cafés. Tenta outra vez.",
+      "opcoes": []
+    },
+    "fim_despedido": {
+      "id": "fim_despedido",
+      "dia": "?",
+      "tipo": "fim",
+      "resultado": "derrota",
+      "titulo": "GAME OVER — DESPEDIDO",
+      "texto": "A Rita inspira fundo. \"Acho que isto não está a resultar.\"\n\nO RH já tem a caixa de cartão pronta. Devolves o crachá ainda com cheiro a plástico.\n\nEsgotaste a paciência da gestão. Tenta outra vez — e talvez não culpes o CI da próxima.",
+      "opcoes": []
+    }
+  }
+}
